@@ -17,4 +17,5 @@ Github提供在线开发功能, 地址为 https://github.dev, 打开项目的流
     - 第一种，点击顶部的"Commit and Push"按钮提交
     - 第二种，在输入提交信息完毕后，使用快捷键 Ctrl + Enter 键快速提交
 
-   
+### 参考说明
+    https://www.ruanyifeng.com/blog/2021/08/best-note-taking-software-for-programmers.html
