@@ -1,6 +1,6 @@
 # github.dev web版vscode使用
 Github提供在线开发功能, 地址为 https://github.dev, 打开项目的流程如下
-1. 创建公有或私有账号
+1. 创建公有或私有仓库
 2. 打开项目，有2种方式
     - 使用链接 https://github.dev/{USER}/{REPO} 访问链接
 
