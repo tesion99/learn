@@ -57,7 +57,7 @@ struct S {
     char b;
     int c;
 };
-#pragma pack(pop) // 回执push之前的对齐方式
+#pragma pack(pop) // 恢复push之前的对齐方式
 
 // 方式二可简写为如下形式
 #pragma pack(push, 4)
