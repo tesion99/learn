@@ -111,17 +111,5 @@ ipcrm {shm|msg|sem} id... # 老式方式, 仅支持id删除
 
 #### 其他
 其他相关函数接口
-**共享内存**
-
-shmctl/shmget
-
-**消息队列**
-
-msgctl/msgget
-
-**信号量**
-
-semctl/semget
-
 **ipc生成key**
 ftok
