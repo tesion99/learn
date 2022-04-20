@@ -1,16 +1,56 @@
 # 共享内存
 
-共享内存(shared memory)是进程间通信方式的一种
+共享内存(shared memory)是进程间通信方式的一种, 常见的共享内存方式有4种:
+
+1. 基于传统SYS V的共享内存
+2. 基于POSIX mmap文件映射实现共享内存
+3. 通过memfd_create()与fd跨进程共享实现共享内存
+4. 多媒体 图形领域广泛使用的基于dma-buf的共享内存
 
 共享内存 /dev/shm
 
-### 创建共享内存
+### (一) SYS V 共享内存
+通过 **ipcs** 查看到的共享内存即是SYS V 共享内存
 
-### attach共享内存
+此种方式需要执行shared memory的key, 通常 key 由 **ftok()** 生成
 
-### detach共享内存
+```c
+// 所需头文件
+#include <sys/types.h>  // key_t
+#include <sys/ipc.h>    // key_t ftok()
+#include <sys/shm.h>    // shmXXX()
 
-### 删除共享内存
+// 分配共享内存
+int shmget(key_t key, size_t size, int shmflg);
+// attach到指定对象
+void *shmat(int shmid, const void *shmaddr, int shmflg);
+// detach共享内存与对象
+int shmdt(const void *shmaddr);
+// 控制共享内存, 执行删除等相关操作
+int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+```
+
+### (二) POSIX 共享内存
+POSIX通过mmap实现共享内存
+```c
+#include <sys/mman.h>
+#include <sys/stat.h>        /* For mode constants */
+#include <fcntl.h>           /* For O_* constants */
+
+// 创建共享内存
+int shm_open(const char *name, int oflag, mode_t mode);
+// 删除共享内存
+int shm_unlink(const char *name);
+// 创建映射
+void *mmap(void *addr, size_t length, int prot, int flags,
+           int fd, off_t offset);
+// 解除映射
+int munmap(void *addr, size_t length);
+```
+
+### (三) memfd_create 共享内存
+
+### (四) dma-buf 共享内存
 
 
 ### 共享内存相关命令
